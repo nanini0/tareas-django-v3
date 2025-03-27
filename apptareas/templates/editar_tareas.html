@@ -1,0 +1,29 @@
+<h2>Editar Tarea</h2>
+<form method="POST">
+    {% csrf_token %}
+    
+    <!-- Campo Nombre -->
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" value="{{ tarea.nombre }}" class="form-control">
+    </div>
+    
+    <!-- Campo Descripción -->
+    <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea name="descripcion" id="descripcion" class="form-control">{{ tarea.descripcion }}</textarea>
+    </div>
+    
+    <!-- Checkbox Estado -->
+    <div class="form-check">
+        <input type="checkbox" name="completado" id="completado" class="form-check-input" 
+               {% if tarea.completado %}checked{% endif %}>
+        <label for="completado" class="form-check-label">Tarea completada</label>
+    </div>
+    
+    <!-- Botones -->
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="{% url 'inicio' %}" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>

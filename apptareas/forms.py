@@ -1,10 +1,9 @@
-from django import forms
 from django.forms import ModelForm
-from .models import *
 
+from django import forms
+from .models import Tareas
 
 class FormTarea(forms.ModelForm):
-
     class Meta:
         model = Tareas
-        field = '__all__'
+        fields = ['nombre', 'descripcion','completado'] 
